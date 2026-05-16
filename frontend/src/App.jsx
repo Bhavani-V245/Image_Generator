@@ -8,6 +8,7 @@ import HistoryGallery from './components/HistoryGallery';
 const API_BASE = 'https://image-generator-backend-tyfb.onrender.com';
 
 function App() {
+  const [activeTab, setActiveTab] = useState('generate');
   const [currentImage, setCurrentImage] = useState(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [error, setError] = useState(null);
@@ -60,22 +61,28 @@ function App() {
         <div className="absolute -bottom-20 left-1/3 w-72 h-72 bg-pink-900/20 rounded-full blur-3xl animate-pulse delay-500" />
       </div>
 
-      <Sidebar />
+      <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
 
       <main className="flex-1 overflow-y-auto relative z-10">
         <div className="max-w-6xl mx-auto p-6 md:p-8 space-y-10 pb-24">
           <Hero />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            <div className="lg:col-span-5">
-              <GeneratePanel onGenerate={handleGenerate} isGenerating={isGenerating} />
+          {activeTab === 'generate' ? (
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              <div className="lg:col-span-5">
+                <GeneratePanel onGenerate={handleGenerate} isGenerating={isGenerating} />
+              </div>
+              <div className="lg:col-span-7">
+                <ImagePreview imageUrl={currentImage} isGenerating={isGenerating} error={error} />
+              </div>
             </div>
-            <div className="lg:col-span-7">
-              <ImagePreview imageUrl={currentImage} isGenerating={isGenerating} error={error} />
+          ) : activeTab === 'history' ? (
+            <HistoryGallery key={galleryKey} />
+          ) : (
+            <div className="glass-panel p-12 text-center text-slate-400">
+              <p>This section is coming soon!</p>
             </div>
-          </div>
-
-          <HistoryGallery key={galleryKey} />
+          )}
         </div>
       </main>
     </div>
