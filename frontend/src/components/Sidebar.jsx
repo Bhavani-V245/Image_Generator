@@ -43,7 +43,7 @@ export default function Sidebar({ activeTab, onTabChange }) {
 
       <div className="mt-auto pt-6 border-t border-slate-800">
         <button 
-          onClick={() => alert("Logging out...")}
+          onClick={onLogout}
           className="w-full flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 rounded-xl hover:text-slate-200 transition-all"
         >
           <LogOut className="w-5 h-5" />

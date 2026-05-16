@@ -26,7 +26,8 @@ export default function Discover() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: i * 0.1 }}
-            className="group relative rounded-2xl overflow-hidden glass-panel border-slate-700/30"
+            onClick={() => alert(`Generation Prompt: "${img.prompt}"`)}
+            className="group relative rounded-2xl overflow-hidden glass-panel border-slate-700/30 cursor-pointer"
           >
             <img src={img.url} alt={img.prompt} className="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-110" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">

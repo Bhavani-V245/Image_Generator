@@ -5,6 +5,7 @@ import GeneratePanel from './components/GeneratePanel';
 import ImagePreview from './components/ImagePreview';
 import HistoryGallery from './components/HistoryGallery';
 import Discover from './components/Discover';
+import Settings from './components/Settings';
 
 const API_BASE = 'https://image-generator-backend-tyfb.onrender.com';
 
@@ -14,6 +15,7 @@ function App() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [error, setError] = useState(null);
   const [galleryKey, setGalleryKey] = useState(0);
+  const [isLoggedOut, setIsLoggedOut] = useState(false);
 
   const handleGenerate = async (prompt, isVoice = false, audioBlob = null) => {
     setIsGenerating(true);
@@ -53,6 +55,26 @@ function App() {
     }
   };
 
+  if (isLoggedOut) {
+    return (
+      <div className="h-screen bg-slate-950 flex items-center justify-center p-6 text-center">
+        <div className="max-w-md space-y-6">
+          <div className="w-20 h-20 rounded-2xl bg-purple-600/20 flex items-center justify-center mx-auto">
+            <LogOut className="w-10 h-10 text-purple-400" />
+          </div>
+          <h1 className="text-3xl font-bold text-white">Signed Out</h1>
+          <p className="text-slate-400">You have been securely logged out of NexusAI. We hope to see you again soon!</p>
+          <button 
+            onClick={() => setIsLoggedOut(false)}
+            className="w-full py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl font-bold text-white shadow-xl shadow-purple-500/20 hover:scale-105 transition-transform"
+          >
+            Sign In Again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex h-screen overflow-hidden bg-slate-950">
       {/* Animated background blobs */}
@@ -62,7 +84,7 @@ function App() {
         <div className="absolute -bottom-20 left-1/3 w-72 h-72 bg-pink-900/20 rounded-full blur-3xl animate-pulse delay-500" />
       </div>
 
-      <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
+      <Sidebar activeTab={activeTab} onTabChange={setActiveTab} onLogout={() => setIsLoggedOut(true)} />
 
       <main className="flex-1 overflow-y-auto relative z-10">
         <div className="max-w-6xl mx-auto p-6 md:p-8 space-y-10 pb-24">
@@ -81,6 +103,8 @@ function App() {
             <HistoryGallery key={galleryKey} />
           ) : activeTab === 'discover' ? (
             <Discover />
+          ) : activeTab === 'settings' ? (
+            <Settings />
           ) : (
             <div className="glass-panel p-12 text-center text-slate-400">
               <p>This section is coming soon!</p>
