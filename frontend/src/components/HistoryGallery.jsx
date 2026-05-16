@@ -8,7 +8,7 @@ export default function HistoryGallery() {
   useEffect(() => {
     // In a real app, you would fetch this from the backend
     // For now, we'll try to fetch from the /gallery endpoint if it exists
-    fetch('/gallery')
+    fetch('/api/gallery')
       .then(res => res.json())
       .then(data => {
         if (data.images) {

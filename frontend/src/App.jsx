@@ -20,12 +20,12 @@ function App() {
       if (isVoice && audioBlob) {
         const formData = new FormData();
         formData.append('audio', audioBlob, 'recording.webm');
-        response = await fetch('/voice_generate', {
+        response = await fetch('/api/voice_generate', {
           method: 'POST',
           body: formData,
         });
       } else {
-        response = await fetch('/generate', {
+        response = await fetch('/api/generate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ prompt }),
@@ -35,8 +35,13 @@ function App() {
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || 'Generation failed');
 
-      setCurrentImage(data.image_url);
-      setGalleryKey(k => k + 1); // refresh gallery
+      // Support both base64 (Vercel) and URL (local Flask)
+      if (data.image_b64) {
+        setCurrentImage(`data:image/png;base64,${data.image_b64}`);
+      } else if (data.image_url) {
+        setCurrentImage(data.image_url);
+      }
+      setGalleryKey(k => k + 1);
     } catch (err) {
       setError(err.message);
     } finally {
