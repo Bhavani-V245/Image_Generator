@@ -4,14 +4,17 @@ import { Settings as SettingsIcon, Bell, Shield, Moon, Sun, Cpu, Database } from
 export default function Settings() {
   const [isDarkMode, setIsDarkMode] = useState(true);
 
-  // Toggle theme class on body
+  // Use useEffect to handle theme switching safely
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.remove('light-theme');
+    } else {
+      document.documentElement.classList.add('light-theme');
+    }
+  }, [isDarkMode]);
+
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
-    if (isDarkMode) {
-      document.documentElement.classList.add('light-theme');
-    } else {
-      document.documentElement.classList.remove('light-theme');
-    }
   };
 
   const sections = [
