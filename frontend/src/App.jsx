@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { LogOut } from 'lucide-react';
 import Sidebar from './components/Sidebar';
 import Hero from './components/Hero';
 import GeneratePanel from './components/GeneratePanel';
