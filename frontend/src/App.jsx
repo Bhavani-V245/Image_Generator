@@ -5,6 +5,8 @@ import GeneratePanel from './components/GeneratePanel';
 import ImagePreview from './components/ImagePreview';
 import HistoryGallery from './components/HistoryGallery';
 
+const API_BASE = 'https://image-generator-backend-tyfb.onrender.com';
+
 function App() {
   const [currentImage, setCurrentImage] = useState(null);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -20,12 +22,12 @@ function App() {
       if (isVoice && audioBlob) {
         const formData = new FormData();
         formData.append('audio', audioBlob, 'recording.webm');
-        response = await fetch('/api/voice_generate', {
+        response = await fetch(`${API_BASE}/voice_generate`, {
           method: 'POST',
           body: formData,
         });
       } else {
-        response = await fetch('/api/generate', {
+        response = await fetch(`${API_BASE}/generate`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ prompt }),
@@ -39,7 +41,7 @@ function App() {
       if (data.image_b64) {
         setCurrentImage(`data:image/png;base64,${data.image_b64}`);
       } else if (data.image_url) {
-        setCurrentImage(data.image_url);
+        setCurrentImage(`${API_BASE}${data.image_url}`);
       }
       setGalleryKey(k => k + 1);
     } catch (err) {
