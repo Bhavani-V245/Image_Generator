@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import GeneratePanel from './components/GeneratePanel';
 import ImagePreview from './components/ImagePreview';
 import HistoryGallery from './components/HistoryGallery';
+import Discover from './components/Discover';
 
 const API_BASE = 'https://image-generator-backend-tyfb.onrender.com';
 
@@ -78,6 +79,8 @@ function App() {
             </div>
           ) : activeTab === 'history' ? (
             <HistoryGallery key={galleryKey} />
+          ) : activeTab === 'discover' ? (
+            <Discover />
           ) : (
             <div className="glass-panel p-12 text-center text-slate-400">
               <p>This section is coming soon!</p>
