@@ -1,0 +1,21 @@
+# Python
+.env
+__pycache__/
+*.pyc
+*.pyo
+env/
+venv/
+
+# Generated images (optional - remove this line if you want to track them)
+static/generated/
+
+# React / Node
+frontend/node_modules/
+frontend/dist/
+
+# Test files
+test_hf.py
+
+# Misc
+.DS_Store
+*.log

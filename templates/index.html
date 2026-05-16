@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voice & Text Image Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="card">
+    <img src="/static/images/logo.png" alt="Logo" style="width:80px;margin:auto;display:block;" />
+    <h1>AI Image Generator</h1>
+    <input type="text" id="promptInput" placeholder="Enter text prompt..." />
+    <div style="display:flex;gap:1rem;justify-content:center;">
+      <button id="generateBtn">Generate</button>
+      <button id="micBtn">🎤</button>
+    </div>
+    <div id="spinner" class="spinner" style="display:none;"></div>
+    <img id="resultImg" src="" alt="Generated image" />
+  </div>
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

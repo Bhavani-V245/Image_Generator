@@ -1,0 +1,109 @@
+/* static/css/style.css */
+/* Dark glassmorphism theme */
+:root {
+  --primary-bg: hsl(210, 30%, 12%);
+  --card-bg: rgba(255, 255, 255, 0.08);
+  --accent: hsl(190, 80%, 55%);
+  --text: #e0e0e0;
+  --muted: #a0a0a0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, hsl(210, 30%, 14%), hsl(210, 30%, 10%));
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 3rem;
+  width: 90%;
+  max-width: 560px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.12);
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.2s;
+}
+
+input[type="text"]:focus {
+  background: rgba(255,255,255,0.2);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background: var(--accent);
+  color: #fff;
+  transition: transform 0.1s, background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+button:hover {
+  background: hsl(190, 80%, 60%);
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+#micBtn {
+  background: var(--muted);
+}
+
+#micBtn.recording {
+  background: hsl(0, 70%, 55%);
+}
+
+#resultImg {
+  max-width: 100%;
+  border-radius: 12px;
+  margin-top: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.spinner {
+  border: 4px solid rgba(255,255,255,0.2);
+  border-top: 4px solid var(--accent);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
