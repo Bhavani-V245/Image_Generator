@@ -1,7 +1,7 @@
 import React from 'react';
 import { Sparkles, Image as ImageIcon, History, Settings, LogOut, Compass } from 'lucide-react';
 
-export default function Sidebar({ activeTab, onTabChange }) {
+export default function Sidebar({ activeTab, onTabChange, onLogout }) {
   const navItems = [
     { id: 'generate', label: 'Generate', icon: ImageIcon, color: 'text-purple-400' },
     { id: 'discover', label: 'Discover', icon: Compass },
