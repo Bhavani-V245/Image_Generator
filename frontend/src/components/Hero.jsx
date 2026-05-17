@@ -12,7 +12,7 @@ export default function Hero() {
         className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/50 text-slate-300 text-sm font-medium backdrop-blur-sm"
       >
         <Wand2 className="w-4 h-4 text-pink-400" />
-        <span>Powered by FLUX.1 & Whisper V3</span>
+        <span>Next-Gen Creative Engine</span>
       </motion.div>
 
       <motion.h1 
