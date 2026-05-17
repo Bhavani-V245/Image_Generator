@@ -2,8 +2,7 @@ import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Mic, Image as ImageIcon, StopCircle, Loader2 } from 'lucide-react';
 
-export default function GeneratePanel({ onGenerate, isGenerating }) {
-  const [prompt, setPrompt] = useState('');
+export default function GeneratePanel({ onGenerate, isGenerating, prompt, setPrompt }) {
   const [isRecording, setIsRecording] = useState(false);
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);

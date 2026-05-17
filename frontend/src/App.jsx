@@ -17,6 +17,7 @@ function App() {
   const [error, setError] = useState(null);
   const [galleryKey, setGalleryKey] = useState(0);
   const [isLoggedOut, setIsLoggedOut] = useState(false);
+  const [prompt, setPrompt] = useState('');
 
   const handleGenerate = async (prompt, isVoice = false, audioBlob = null) => {
     setIsGenerating(true);
@@ -94,7 +95,7 @@ function App() {
           {activeTab === 'generate' ? (
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               <div className="lg:col-span-5">
-                <GeneratePanel onGenerate={handleGenerate} isGenerating={isGenerating} />
+                <GeneratePanel onGenerate={handleGenerate} isGenerating={isGenerating} prompt={prompt} setPrompt={setPrompt} />
               </div>
               <div className="lg:col-span-7">
                 <ImagePreview imageUrl={currentImage} isGenerating={isGenerating} error={error} />
@@ -103,7 +104,10 @@ function App() {
           ) : activeTab === 'history' ? (
             <HistoryGallery key={galleryKey} />
           ) : activeTab === 'discover' ? (
-            <Discover />
+            <Discover onSelectPrompt={(selectedPrompt) => {
+              setPrompt(selectedPrompt);
+              setActiveTab('generate');
+            }} />
           ) : activeTab === 'settings' ? (
             <Settings />
           ) : (

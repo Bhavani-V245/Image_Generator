@@ -8,10 +8,10 @@ const MOCK_DISCOVER = [
   { url: 'https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=2670&auto=format&fit=crop', prompt: 'Minimalist landscape' },
   { url: 'https://images.unsplash.com/photo-1633167606207-d840b5070fc2?q=80&w=2530&auto=format&fit=crop', prompt: 'Vibrant futuristic city' },
   { url: 'https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?q=80&w=2670&auto=format&fit=crop', prompt: 'Ethereal cosmic storm' },
-  { url: 'https://images.unsplash.com/photo-1620121692029-d088224efc74?q=80&w=2532&auto=format&fit=crop', prompt: 'Digital 3D render' },
+  { url: 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=2532&auto=format&fit=crop', prompt: 'Digital 3D render' },
 ];
 
-export default function Discover() {
+export default function Discover({ onSelectPrompt }) {
   return (
     <div className="space-y-8">
       <div className="flex items-center gap-3 text-slate-300">
@@ -26,8 +26,8 @@ export default function Discover() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: i * 0.1 }}
-            onClick={() => alert(`Generation Prompt: "${img.prompt}"`)}
-            className="group relative rounded-2xl overflow-hidden glass-panel border-slate-700/30 cursor-pointer"
+            onClick={() => onSelectPrompt(img.prompt)}
+            className="group relative rounded-2xl overflow-hidden glass-panel border-slate-700/30 cursor-pointer hover:border-purple-500/30 transition-all duration-300"
           >
             <img src={img.url} alt={img.prompt} className="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-110" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
