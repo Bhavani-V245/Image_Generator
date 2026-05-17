@@ -7,6 +7,7 @@ import ImagePreview from './components/ImagePreview';
 import HistoryGallery from './components/HistoryGallery';
 import Discover from './components/Discover';
 import Settings from './components/Settings';
+import MobileNav from './components/MobileNav';
 
 const API_BASE = 'https://image-generator-backend-tyfb.onrender.com';
 
@@ -87,6 +88,7 @@ function App() {
       </div>
 
       <Sidebar activeTab={activeTab} onTabChange={setActiveTab} onLogout={() => setIsLoggedOut(true)} />
+      <MobileNav activeTab={activeTab} onTabChange={setActiveTab} onLogout={() => setIsLoggedOut(true)} />
 
       <main className="flex-1 overflow-y-auto relative z-10">
         <div className="max-w-6xl mx-auto p-6 md:p-8 space-y-10 pb-24">
